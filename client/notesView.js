@@ -12,6 +12,10 @@ class NotesView {
         this.addNewNote(noteContent)
         this.displayNotes();
       });
+
+      this.clearAllNotesButtonEl.addEventListener('click', () => {
+        this.clearNotes();
+      });
     }
   
     displayNotes() {
@@ -42,7 +46,13 @@ class NotesView {
           this.displayNotes();
         })
     }
-  
+
+    clearNotes() {
+        document.querySelectorAll('.note').forEach(element => {
+          element.remove();
+        });
+        this.displayNotesFromApi();
+    }
 }   
   
 module.exports = NotesView;

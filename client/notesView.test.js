@@ -67,4 +67,22 @@ describe('NotesView', () => {
     notes.displayNotesFromApi()
     expect(document.querySelectorAll('div.note').length).toEqual(1)
   });
+
+  it ('clears my notes with the Clear Notes button', () => {
+
+    const model = new NotesModel
+    const client = new NotesClient
+    const view = new NotesView(model, client)
+    const inputEl = document.querySelector('#note-input');
+    inputEl.value = 'test input';
+
+    client.loadNotes.mockImplementation((callback) => {
+      callback(['note 1'])
+    });
+    
+    view.displayNotes();
+    view.clearNotes();
+    
+    expect(document.querySelectorAll('div.note').length).toEqual(1);
+  });
 });
