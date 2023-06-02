@@ -29,4 +29,27 @@ describe('NotesClient class', () => {
       done();
     });
   });
+
+  it('sends a POST request', (done) => {
+    const client = new NotesClient();
+
+    // blank mock response for fetch
+    fetchMock.mockResponse('');
+
+    // Create the post request URL and parameters
+    const expectedUrl = 'http://localhost:3000/notes';
+    const expectedOptions = {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ content: "New note" })
+    };
+    // Call method and assert the correct post request has been made
+    client.createNote('New note')
+      .then(() => {
+        expect(fetchMock).toHaveBeenCalledWith(expectedUrl, expectedOptions);
+        done();
+    });
+  });
 });
