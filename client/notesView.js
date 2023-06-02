@@ -64,7 +64,7 @@ class NotesView {
         errorEl.textContent = "Something went wrong!";
         errorEl.className = 'error';
         this.mainContainerEl.append(errorEl);
-      }
+    }
 }   
   
 module.exports = NotesView;
