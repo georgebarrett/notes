@@ -13,4 +13,12 @@ describe('NotesModel', () => {
     expect(notes.getNotes()).toEqual(['Make a cup of tea', 'Make another cup of tea'])
   });
 
+  it('should reset note list', () => {
+    notes = new Notes
+    notes.addNote('Do something');
+    notes.addNote('Do more things');
+    notes.reset();
+    expect(notes.getNotes()).toEqual([])
+  });
+
 });

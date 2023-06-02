@@ -15,6 +15,7 @@ class Notes {
     }
   
     reset() {
+        this.notes = [];
     }
   }
   
