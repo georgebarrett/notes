@@ -12,6 +12,7 @@ class Notes {
     }
   
     setNotes(notes) {
+        this.notes = notes;
     }
   
     reset() {

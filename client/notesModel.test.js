@@ -29,4 +29,12 @@ describe('NotesModel', () => {
     expect(notes.getNotes()).toEqual([])
   });
 
+  it('sets notes from an array', () => {
+    const notes = new Notes();
+
+    notes.setNotes(['one', 'two']);
+
+    expect(notes.getNotes().length).toEqual(2);
+  })
+
 });
