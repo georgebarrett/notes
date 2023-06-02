@@ -103,4 +103,12 @@ describe('NotesView', () => {
 
     expect(client.createNote).toHaveBeenCalledWith('Note here!')
   })
+
+  it('display appends a fail message on the page', () => {  
+    const model = new NotesModel();
+    const view = new NotesView(model);
+  
+    view.displayError();
+    expect(document.querySelector('.error').textContent).toEqual("Something went wrong!");
+  });
 });

@@ -58,6 +58,13 @@ class NotesView {
     addNoteToAPI(noteContent) {
         this.client.createNote(noteContent);
     }
+
+    displayError() {
+        let errorEl = document.createElement('div');
+        errorEl.textContent = "Something went wrong!";
+        errorEl.className = 'error';
+        this.mainContainerEl.append(errorEl);
+      }
 }   
   
 module.exports = NotesView;
