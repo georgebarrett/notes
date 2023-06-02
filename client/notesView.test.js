@@ -39,4 +39,15 @@ describe('NotesView', () => {
 
     expect(document.querySelectorAll('div.note').length).toEqual(2);
   });
+
+  it ('clears the input value after adding a note', () => {
+
+    const model = new NotesModel
+    const view = new NotesView(model)
+    const inputEl = document.querySelector('#note-input');
+    inputEl.value = 'test input';
+    view.displayNotes();
+
+    expect(document.getElementById('note-input').value).toBe("")
+  });
 });
