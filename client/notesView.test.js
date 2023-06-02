@@ -23,4 +23,20 @@ describe('NotesView', () => {
 
     expect(document.querySelectorAll('div.note').length).toBe(1);
   });
+
+  it ('clears the list of previous note before displaying', () => {
+
+    const model = new NotesModel
+    const view = new NotesView(model)
+    const inputEl = document.querySelector('#note-input');
+    inputEl.value = 'test input';
+    model.addNote(inputEl.value)
+    inputEl.value = 'test two input';
+    model.addNote(inputEl.value)
+
+    view.displayNotes();
+    //view.displayNotes();
+
+    expect(document.querySelectorAll('div.note').length).toEqual(2);
+  });
 });
