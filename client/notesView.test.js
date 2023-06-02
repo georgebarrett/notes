@@ -85,4 +85,22 @@ describe('NotesView', () => {
     
     expect(document.querySelectorAll('div.note').length).toEqual(1);
   });
+
+  it('adds a note to the backend', () => {
+    const client = new NotesClient();
+    client.createNote.mockImplementation((note) => {
+      return ""
+    });
+    
+    const model = new NotesModel();
+    const view = new NotesView(model, client);
+
+    const inputEl = document.querySelector('#note-input');
+    inputEl.value = 'Note here!'
+
+    const buttonEl = document.querySelector('#add-note-button');
+    buttonEl.click();
+
+    expect(client.createNote).toHaveBeenCalledWith('Note here!')
+  })
 });

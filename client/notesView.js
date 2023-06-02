@@ -9,6 +9,7 @@ class NotesView {
   
       this.addNoteButtonEl.addEventListener('click', () => {
         const noteContent = document.querySelector('#note-input').value;
+        this.addNoteToAPI(noteContent)
         this.addNewNote(noteContent)
         this.displayNotes();
       });
@@ -52,6 +53,10 @@ class NotesView {
           element.remove();
         });
         this.displayNotesFromApi();
+    }
+
+    addNoteToAPI(noteContent) {
+        this.client.createNote(noteContent);
     }
 }   
   
