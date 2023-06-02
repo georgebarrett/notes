@@ -8,6 +8,7 @@ class Notes {
     }
   
     addNote(note) {
+        this.notes.push(note);
     }
   
     setNotes(notes) {
